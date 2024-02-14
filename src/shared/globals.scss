@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+}
+
+@layer utilities {
+  .container {
+    position: relative;
+    margin-inline: auto;
+    max-width: 375px;
+    width: calc(100vw - 48px);
+    @media (min-width: 540px) {
+      max-width: none;
+    }
+    @media (min-width: 768px) {
+      max-width: 1320px;
+      width: calc(100vw - 100px);
+    }
+  }
+}
+
+// global styles
+
+body {
+  font-family: var(--font-inter);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-genos);
+    line-height: 0.8;
+  }
+  p {
+    font-weight: 400;
+  }
+}
