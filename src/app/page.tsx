@@ -1,3 +1,9 @@
+import Link from 'next/link'
+
 export default function Home() {
-  return <div className="text-3xl">Home Template</div>
+  return (
+    <div>
+      <Link href="/test">start test</Link>
+    </div>
+  )
 }

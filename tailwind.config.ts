@@ -13,7 +13,9 @@ const config: Config = {
         inter: ['var(--font-inter)'],
         genos: ['var(--font-genos)'],
       },
-      colors: {},
+      colors: {
+        primary: '#006FEE',
+      },
     },
   },
   plugins: [],
