@@ -1,37 +1,57 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { IconArrowLeft, IconArrowRight, IconTimer } from '@/utils/vector-icons'
 
-export default function Timer() {
-  const countdownTime = 10
-  const [time] = useState(countdownTime)
+/* eslint-disable prefer-template */
+/* eslint-disable arrow-body-style */
 
-  const formatTime = (t: number) => {
-    // convert time in 00:00 format
+export default function Timer({
+  isFirstStep,
+  isLastStep,
+  next,
+  back,
+}: {
+  isFirstStep: boolean
+  isLastStep: boolean
+  next
+  back
+}) {
+  const [elapsedTime, setElapsedTime] = useState(0)
 
-    const minutes = Math.floor(t / 60)
-    const seconds = t % 60
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setElapsedTime((prevElapsedTime) => prevElapsedTime + 1)
+    }, 1000)
 
-    return `${minutes}:${seconds}`
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60)
+    const seconds = timeInSeconds % 60
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
   }
 
-  //   useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       setTime((prev) => prev - 1)
-  //     }, 1000)
-  //     return () => clearInterval(interval)
-  //   }, [])
-
   return (
-    <div className="my-5 flex w-full items-center justify-between">
-      <IconArrowLeft />
-      <div className="flex items-center gap-1">
+    <div className="my-5 flex h-3 w-full items-center justify-center">
+      {!isFirstStep && (
+        <div className="absolute left-0" onClick={back}>
+          <IconArrowLeft />
+        </div>
+      )}
+      <div className=" flex items-center gap-1">
         <IconTimer />
-        <span className="ml-[8px] text-[14px] font-bold leading-[16px] text-[#000000]">{formatTime(time)}</span>
+        <span className="ml-[8px] text-[14px] font-bold leading-[16px] text-[#000000]">{formatTime(elapsedTime)}</span>
       </div>
-      <IconArrowRight />
+      {!isLastStep && (
+        <div className="absolute right-0" onClick={next}>
+          <IconArrowRight />
+        </div>
+      )}
     </div>
   )
 }

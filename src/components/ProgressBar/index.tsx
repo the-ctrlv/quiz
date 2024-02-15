@@ -9,13 +9,19 @@ export default function ProgressBar({
   return (
     <div className="relative w-full overflow-hidden rounded-full bg-[#DFE4EA]">
       <div className="relative rounded-full" />
-      <div className="bg-primary h-5 w-1/2 " />
-      <span
-        className="bg-primary absolute left-1/2 top-1/2 -translate-x-1/2
-      -translate-y-1/2"
+      <div
+        className="relative h-5 bg-primary"
+        style={{
+          width: `${(currentQuestion / totalQuestions) * 100}%`,
+        }}
       >
-        {currentQuestion}/{totalQuestions}
-      </span>
+        <span
+          className="absolute left-1/2  top-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-sm
+      text-white"
+        >
+          {currentQuestion}/{totalQuestions}
+        </span>
+      </div>
     </div>
   )
 }

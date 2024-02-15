@@ -6,8 +6,10 @@ export default function Question({
   data,
   currentStepIndex,
   setCurrentStepIndex,
+  isLastStep,
 }: {
   data: IQuestion
+  isLastStep: boolean
   currentStepIndex: number
   setCurrentStepIndex: (index: number) => void
 }) {
@@ -32,22 +34,18 @@ export default function Question({
 
   return (
     <div className="relative w-full">
-      <Image
-        src={data.questionImage}
-        alt={`Question-${currentStepIndex + 1}`}
-        className="h-auto w-full"
-        width={300}
-        height={300}
-      />
+      <div className="relative aspect-square w-full">
+        <Image src={data.questionImage} alt={`Question-${currentStepIndex + 1}`} fill className="object-contain" />
+      </div>
       <h4 className="my-5 text-center text-base font-semibold">Choose your answer:</h4>
       <div className="grid grid-cols-3 gap-x-4 gap-y-10">
         {data.answerImages.map((answer, index) => (
           <div
             className="flex h-[53px] items-center justify-center gap-4 p-1"
             key={index}
-            onClick={() => setCurrentStepIndex(currentStepIndex + 1)}
+            onClick={() => !isLastStep && setCurrentStepIndex(currentStepIndex + 1)}
           >
-            <h5 className="text-primary text-[34px] font-bold">{getConvertedTitle(index)}</h5>
+            <h5 className="text-[34px] font-bold text-primary">{getConvertedTitle(index)}</h5>
             <Image
               src={answer}
               alt={`Answer-${data.index + 1}-${index + 1}`}

@@ -10,9 +10,9 @@ export const IconArrowLeft = () => (
     <path
       d="M6.16466 0.835224L1 5.99989L6.16466 11.1646"
       stroke="#0070F3"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
@@ -22,9 +22,9 @@ export const IconArrowRight = () => (
     <path
       d="M1.16468 0.835224L6.32935 5.99989L1.16468 11.1646"
       stroke="#0070F3"
-      stroke-width="1.5"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 )
