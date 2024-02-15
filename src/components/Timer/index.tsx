@@ -6,18 +6,13 @@ import { IconArrowLeft, IconArrowRight, IconTimer } from '@/utils/vector-icons'
 
 /* eslint-disable prefer-template */
 /* eslint-disable arrow-body-style */
-
-export default function Timer({
-  isFirstStep,
-  isLastStep,
-  next,
-  back,
-}: {
+interface ITimer {
   isFirstStep: boolean
   isLastStep: boolean
-  next
-  back
-}) {
+  next: () => void
+  back: () => void
+}
+export default function Timer({ isFirstStep, isLastStep, next, back }: ITimer) {
   const [elapsedTime, setElapsedTime] = useState(0)
 
   useEffect(() => {
