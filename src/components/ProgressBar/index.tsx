@@ -6,13 +6,15 @@ export default function ProgressBar({
   currentQuestion: number
   totalQuestions: number
 }) {
+  const minWidthPercentage = 10 // Adjust this value based on your design needs.
+  const widthPercentage = Math.max((currentQuestion / totalQuestions) * 100, minWidthPercentage)
   return (
     <div className="relative w-full overflow-hidden rounded-full bg-[#DFE4EA]">
       <div className="relative rounded-full" />
       <div
-        className="relative h-5 bg-primary"
+        className="relative h-5 bg-primary transition-all duration-500 ease-in-out"
         style={{
-          width: `${(currentQuestion / totalQuestions) * 100}%`,
+          width: `${widthPercentage}%`,
         }}
       >
         <span

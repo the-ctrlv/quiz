@@ -34,7 +34,7 @@ export default function Timer({ isFirstStep, isLastStep, next, back }: ITimer) {
   return (
     <div className="my-5 flex h-3 w-full items-center justify-center">
       {!isFirstStep && (
-        <div className="absolute left-0" onClick={back}>
+        <div className="absolute left-0 cursor-pointer p-2" onClick={back}>
           <IconArrowLeft />
         </div>
       )}
@@ -43,7 +43,7 @@ export default function Timer({ isFirstStep, isLastStep, next, back }: ITimer) {
         <span className="ml-[8px] text-[14px] font-bold leading-[16px] text-[#000000]">{formatTime(elapsedTime)}</span>
       </div>
       {!isLastStep && (
-        <div className="absolute right-0" onClick={next}>
+        <div className="absolute right-0 cursor-pointer p-2" onClick={next}>
           <IconArrowRight />
         </div>
       )}

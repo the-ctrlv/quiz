@@ -36,7 +36,6 @@ export default function Home() {
       isLastStep={isLastStep}
     />
   ))
-
   function next() {
     setCurrentStepIndex((i) => {
       if (i >= questionsArray.length - 1) return i
@@ -59,7 +58,7 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full pb-20">
       <ProgressBar currentQuestion={currentStepIndex + 1} totalQuestions={questionsArray.length} />
       <Timer isFirstStep={isFirstStep} isLastStep={isLastStep} next={next} back={back} />
       <form onSubmit={handleSubmit(onSubmit)}>{questionsArray[currentStepIndex]}</form>
