@@ -1,10 +1,6 @@
-export interface IQuestion {
-  index: number
-  questionImage: string
-  answerImages: string[]
-}
+import { IQuestionData } from '@/shared/types'
 
-export const questions: IQuestion[] = [
+export const questions: IQuestionData[] = [
   {
     index: 0,
     questionImage: '/images/questions/question/q1.jpg',
